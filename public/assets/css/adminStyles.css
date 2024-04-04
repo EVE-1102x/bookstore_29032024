@@ -1,0 +1,4 @@
+/* Custom CSS to make offcanvas smaller */
+.offcanvas {
+    width: 250px !important;
+}
