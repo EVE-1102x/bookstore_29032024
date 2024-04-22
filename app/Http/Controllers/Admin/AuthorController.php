@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AuthorsFormRequest;
 use App\Http\Requests\Admin\PaymentMethodsFormRequest;
 use App\Models\Authors;
-use App\Models\User;
+use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

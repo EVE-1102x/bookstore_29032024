@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\EmployeesFormRequest;
 use App\Models\employees;
-use App\Models\User;
+use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -13,7 +13,7 @@ class EmployeeController extends Controller
 {
     public function index()
     {
-        $user = User::where('role_as', '=', '1')->get();
+        $user = Users::where('role_as', '=', '1')->get();
         $employee = employees::all();
         return view('adminpanel.adminviews.employees.index', compact('employee','user'));
     }
@@ -26,7 +26,7 @@ class EmployeeController extends Controller
     public function store(EmployeesFormRequest $request)
     {
         $data = $request->validated();
-        $user = new User;
+        $user = new Users;
         $user->name = $data['name'];
         $user->email = $data['email'];
         $user->phone = $data['phone'];
@@ -36,7 +36,7 @@ class EmployeeController extends Controller
 
 //      Find the newest
         $newestUserID = null;
-        $users = User::all();
+        $users = Users::all();
         foreach ($users as $Users)
         {
             if ($newestUserID === null || $Users->id > $newestUserID) {
@@ -55,7 +55,7 @@ class EmployeeController extends Controller
     public function edit($employee_id)
     {
         $employee = employees::find($employee_id);
-        $user = User::find($employee->UserID);
+        $user = Users::find($employee->UserID);
 
         return view('adminpanel.adminviews.employees.edit', compact('employee','user'));
     }
@@ -63,7 +63,7 @@ class EmployeeController extends Controller
     public function update(EmployeesFormRequest $request, $employee_id)
     {
         $employee = employees::find($employee_id);
-        $user = User::find($employee->UserID);
+        $user = Users::find($employee->UserID);
         $data = $request->validated();
 
 //      Update user
@@ -84,7 +84,7 @@ class EmployeeController extends Controller
     public function delete($employee_id)
     {
         $employee = employees::find($employee_id);
-        $user = User::find($employee->UserID);
+        $user = Users::find($employee->UserID);
 
         if ($employee && $user)
         {

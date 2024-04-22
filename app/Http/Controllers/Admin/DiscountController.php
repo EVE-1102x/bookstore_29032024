@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PaymentMethodsFormRequest;
 use App\Models\Discounts;
-use App\Models\User;
+use App\Models\Users;
 use Illuminate\Support\Facades\Auth;
 
 class DiscountController extends Controller

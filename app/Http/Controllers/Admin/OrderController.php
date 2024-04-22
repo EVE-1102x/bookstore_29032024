@@ -5,21 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\OrderDetailFormRequest;
 use App\Http\Requests\Admin\OrderFormRequest;
-use App\Http\Requests\Admin\SizeFormRequest;
+use App\Models\Authors;
 use App\Models\Books;
 use App\Models\Categories;
-use App\Models\Category;
-use App\Models\customer;
 use App\Models\customers;
-use App\Models\employee;
 use App\Models\employees;
-use App\Models\Order;
+use App\Models\Orders;
 use App\Models\OrderDetails;
 use App\Models\PaymentMethods;
-use App\Models\Product;
-use App\Models\Orders;
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Models\Publishers;
+use App\Models\Users;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
@@ -27,76 +22,165 @@ class OrderController extends Controller
     public function index()
     {
         $employee = Employees::all();
-        $user = User::all();
-        $customer = Customers::all();
+        $users = Users::all();
+        $customers = Customers::all();
         $orders = Orders::all();
-        $paymentmethods = PaymentMethods::all();
+        $paymentID = PaymentMethods::all();
 
         return view('adminpanel.adminviews.orders.index',
-            compact('employee','user','customer','orders','paymentmethods'));
+            compact('employee', 'users', 'customers', 'orders', 'paymentID'));
     }
 
-    public function create($product_chose = null)
+    public function create()
     {
-        $users = User::all();
-        $categories = Categories::all();
+        $users = Users::all();
         $customers = Customers::all();
         $paymentMethod = PaymentMethods::all();
-
-        return view('adminpanel.adminviews.orders.create-1',
-            compact('categories','users','customers','paymentMethod','product_chose'));
-    }
-
-    public function create_bookMenu(OrderFormRequest $request)
-    {
-        $data = $request->validated();
-        $orders = new Orders;
-        $orders->EmployeeID = $data['EmployeeID'];
-        $orders->CustomerID = $data['CustomerID'];
-        $CategoryID = $data['CategoryID'];
-
+        $categories = Categories::all();
+        $authors = Authors::all();
+        $publishers = Publishers::all();
         $books = Books::all();
-
-        return view('adminpanel.adminviews.orders.create-2',
-            compact('CategoryID','orders','books'));
-    }
-
-    public function store(OrderFormRequest $request, OrderDetailFormRequest $requestDetail)
-    {
-        $data = $request->validated();
-        $dataDetail = $requestDetail->validated();
-        $order = new Orders;
-
-//      Tinh ra tong gia tien book
-        $bookPrice = [];
-        $bookID = [];
-        $bookSold = [];
-        $subtotal = [];
         $totalPrice = 0;
 
-        for ($i = 0; $i < $PrdNumber; $i++)
+        if (isset($_SESSION['OrderDetail']))
+        foreach ($_SESSION['OrderDetail'] as $BookID)
         {
-//          lay ra toan bo san pham duoc chon
-            $prdID[$i] = $data2['ProductID'][$i];
-            $product = Product::find($prdID[$i]);
-            $prdPrice[$i] = $product->ProPrice;
-
-//          Tinh ra subtotal cua tung san pham
-            $prdSold[$i] = $data2['PrdSold'][$i];
-            $subtotal[$i] = $prdSold[$i] * $prdPrice[$i];
-            $totalPrice += $subtotal[$i];
+            $totalPrice += $BookID['subTotal'];
         }
 
-//      Them du lieu vao database
-        $order->TotalPrice = $totalPrice;
-        $order->OrdStatus = $data['ord_status'];
-        $order->OrdAddress = $data['OrdAddress'];
-        $order->paymentMethod = $data['paymentMethod'];
+        return view('adminpanel.adminviews.orders.create',
+            compact('categories', 'users', 'customers', 'paymentMethod',
+                'books', 'authors', 'publishers', 'totalPrice'));
+    }
+
+    //Function updateOrderDetail dùng để quản lý 
+    public function updateOrderDetail(OrderDetailFormRequest $request)
+    {
+        $data = $request->validated();
+
+        //Kiểm tra $_SESSION['OrderDetail'] đã tồn tại hay chưa
+        if (!isset($_SESSION['OrderDetail']))
+        {
+            //Khởi tại $_SESSION cho tạo mới đơn hàng
+            foreach ($data['BookID'] as $newProductID)
+            {
+                $book = Books::find($newProductID);
+
+                $_SESSION['OrderDetail'][$newProductID . '-' . 'create'] = array(
+                    'productID' => $book->id,
+                    'name' => $book->name,
+                    'image' => $book->image,
+                    'CategoryID' => $book->CategoryID,
+                    'AuthorID' => $book->AuthorID,
+                    'PublisherID' => $book->PublisherID,
+                    'price' => $book->price,
+                    'soldOut' => 1,
+                    'subTotal' => $book->price
+                );
+            }
+
+            return redirect(route('addOrder'))
+                ->with('message', 'Books were Added Successfully');
+        }
+
+        if ($_GET['action'] == 'update')
+        {
+            switch (true)
+            {
+                // Nếu nhận được ID sản phẩm mới
+                case !empty($data):
+
+                    //Gán giá trị productID hiện tại vào array
+                    $currentProductID = [];
+                    foreach ($_SESSION['OrderDetail'] as $BookID)
+                    {
+                        $currentProductID[] = $BookID['productID'];
+                    }
+
+                    // Lặp qua các ID sản phẩm mới để kiểm tra và thêm vào $productsID
+                    foreach ($data['BookID'] as $newProductID)
+                    {
+                        // Kiểm tra nếu ID sản phẩm chưa tồn tại trong SESSION thì thêm vào
+                        if (!in_array($newProductID, $currentProductID)) {
+                            $book = Books::find($newProductID);
+
+                            $_SESSION['OrderDetail'][$newProductID . '-' . 'create'] = array(
+                                'productID' => $book->id,
+                                'name' => $book->name,
+                                'image' => $book->image,
+                                'CategoryID' => $book->CategoryID,
+                                'AuthorID' => $book->AuthorID,
+                                'PublisherID' => $book->PublisherID,
+                                'price' => $book->price,
+                                'soldOut' => 1,
+                                'subTotal' => $book->price
+                            );
+                        }
+
+                        // Nếu ID tồn tại thì nhập số lượng mới
+                        else
+                        {
+                            $book = Books::find($newProductID);
+
+                            if (!isset($newSoldOut))
+                            {
+                                $newSoldOut = $data['soldOut'];
+                                $step = 0;
+                            }
+
+                            $_SESSION['OrderDetail'][$newProductID]['soldOut']
+                                = $newSoldOut[$step];
+
+                            $_SESSION['OrderDetail'][$newProductID]['subTotal']
+                                = ($book->price) * $newSoldOut[$step];
+
+                            $step++;
+                        }
+                    }
+
+                    return redirect(route('addOrder'))
+                        ->with('message', 'Books were Added Successfully');
+
+                // Nếu không nhận được ID sản phẩm mới
+                default:
+                    return redirect(route('addOrder'))
+                        ->with('error', 'No Books were Added');
+            }
+        }
+
+        elseif ($_GET['action'] == 'delete')
+        {
+            $deleteID = $_GET['id'];
+            unset($_SESSION['OrderDetail'][$deleteID]);
+
+            return redirect(route('addOrder'))
+                ->with('message', 'Book Deleted Successfully');
+        }
+    }
+
+    public function store(OrderFormRequest $request,
+                          OrderDetailFormRequest $requestDetail)
+    {
+        $data = $request->validated();
+
+        //Tinh ra tong gia tien books
+        $totalPrice = 0;
+        foreach ($_SESSION['OrderDetail'] as $BookID)
+        {
+            $totalPrice += $BookID['subTotal'];
+        }
+
+        //Them du lieu cho Order
+        $order = new Orders;
+        $order->status = $data['status'];
+        $order->totalPrice = $totalPrice;
+        $order->address = $data['address'];
+        $order->PaymentID = $data['PaymentID'];
         $order->CustomerID = $data['CustomerID'];
         $order->EmployeeID = Auth::user()->id;
         $order->save();
 
-//      Find the newest OrderID
+        //Find the newest OrderID
         $newestOrderID = null;
         $AllOrder = Orders::all();
         foreach ($AllOrder as $Order)
@@ -106,32 +190,42 @@ class OrderController extends Controller
             }
         }
 
-//      Them du lieu cho OrderDetails
-        for ($i = 0; $i < $PrdNumber; $i++)
+        //Them du lieu cho OrderDetails
+        foreach ($_SESSION['OrderDetail'] as $detail)
         {
-            $orderdetail = new OrderDetails;
-            $orderdetail->OrderID = $newestOrderID;
-            $orderdetail->ProductID = $data2['ProductID'][$i];
-            $orderdetail->SubTotal = $subtotal[$i];
-            $orderdetail->SoldOut = $data2['PrdSold'][$i];
-            $orderdetail->save();
+            $orderDetail = new OrderDetails;
+            $orderDetail->OrderID = $newestOrderID;
+            $orderDetail->BookID = $detail['productID'];
+            $orderDetail->soldOut = $detail['soldOut'];
+            $orderDetail->subTotal = $detail['subTotal'];
+            $orderDetail->save();
         }
 
-        return redirect(route('order'))->with('message','Order Add Successfully');
+        //Xoá SESSION sau khi hoàn thành tạo đơn hàng
+        unset($_SESSION['OrderDetail']);
+
+        return redirect(route('orders'))->with('message','Order Add Successfully');
     }
 
     public function edit($order_id)
     {
-        $order = Order::find($order_id);
-        $product = Product::all();
-        $user = User::all();
-        $category = Category::all();
-        $customer = Customer::all();
-        $employee = Employee::all();
-        $orderdetail = OrderDetails::all();
+        $order = Orders::find($order_id);
+        $employee = Employees::all();
+        $orderDetails = OrderDetails::where('OrderID' == $order_id);
+        $users = Users::all();
+        $customers = Customers::all();
+        $paymentMethod = PaymentMethods::all();
+        $categories = Categories::all();
+        $authors = Authors::all();
+        $publishers = Publishers::all();
+        $books = Books::all();
+        $totalPrice = 0;
 
-        return view('adminpanel.adminviews.order.edit',
-            compact('product','category','order','user','customer','employee','orderdetail','order_id'));
+
+
+        return view('adminpanel.adminviews.orders.edit',
+            compact('books','categories','order','users','customers',
+                'employee','orderDetails','order_id','totalPrice','paymentMethod','authors','publishers'));
     }
 
     public function update(OrderFormRequest $request, $order_id)

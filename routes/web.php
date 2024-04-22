@@ -79,15 +79,16 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function (){
 
 //  Orders Routes
     Route::get('orders', [App\Http\Controllers\Admin\OrderController::class, 'index'])->name('orders');
-    Route::get('add-orders', [App\Http\Controllers\Admin\OrderController::class, 'create']);
-    Route::post('add-orders', [App\Http\Controllers\Admin\OrderController::class, 'store']);
-
-    Route::get('create-bookMenu', [App\Http\Controllers\Admin\OrderController::class, 'book_menu']);
-    Route::post('create-bookMenu/{product_chose}', [App\Http\Controllers\Admin\OrderController::class, 'create']);
+    Route::get('add-orders', [App\Http\Controllers\Admin\OrderController::class, 'create'])->name('addOrder');
+    Route::post('store-orders', [App\Http\Controllers\Admin\OrderController::class, 'store']);
 
     Route::get('edit-orders/{order_id}', [App\Http\Controllers\Admin\OrderController::class, 'edit']);
     Route::put('edit-orders/{order_id}', [App\Http\Controllers\Admin\OrderController::class, 'update']);
     Route::get('delete-orders/{order_id}', [App\Http\Controllers\Admin\OrderController::class, 'delete']);
+
+//  OrderDetails Routes
+    Route::post('update-order-detail', [App\Http\Controllers\Admin\OrderController::class, 'updateOrderDetail']);
+    Route::get('update-order-detail', [App\Http\Controllers\Admin\OrderController::class, 'updateOrderDetail']);
 
 //  paymentMethods Routes
     Route::get('paymentmethods', [App\Http\Controllers\Admin\PaymentMethodController::class, 'index'])->name('paymentmethods');

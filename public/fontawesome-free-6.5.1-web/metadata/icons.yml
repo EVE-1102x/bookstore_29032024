@@ -5670,7 +5670,7 @@ building-user:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: Building User
+  label: Building Users
   search:
     terms:
       - apartment
@@ -7383,7 +7383,7 @@ chalkboard-user:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: Chalkboard User
+  label: Chalkboard Users
   search:
     terms:
       - blackboard
@@ -9180,7 +9180,7 @@ circle-user:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: Circle User
+  label: Circle Users
   search:
     terms:
       - employees
@@ -9412,7 +9412,7 @@ clipboard-user:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: Clipboard User
+  label: Clipboard Users
   search:
     terms:
       - attendance
@@ -21029,7 +21029,7 @@ hospital-user:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: Hospital User
+  label: Hospital Users
   search:
     terms:
       - covid-19
@@ -21430,7 +21430,7 @@ house-chimney-user:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: House Chimney User
+  label: House Chimney Users
   search:
     terms:
       - covid-19
@@ -21833,7 +21833,7 @@ house-user:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: House User
+  label: House Users
   search:
     terms:
       - house
@@ -40604,7 +40604,7 @@ user:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: User
+  label: Users
   search:
     terms:
       - adult
@@ -40638,7 +40638,7 @@ user-astronaut:
     - 6.4.0
     - 6.5.0
     - 6.5.1
-  label: User Astronaut
+  label: Users Astronaut
   search:
     terms:
       - avatar
@@ -40664,7 +40664,7 @@ user-check:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: User Check
+  label: Users Check
   search:
     terms:
       - employees
@@ -40689,7 +40689,7 @@ user-clock:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: User Clock
+  label: Users Clock
   search:
     terms:
       - employees
@@ -40719,7 +40719,7 @@ user-doctor:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: User Doctor
+  label: Users Doctor
   search:
     terms:
       - covid-19
@@ -40751,7 +40751,7 @@ user-gear:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: User Gear
+  label: Users Gear
   search:
     terms:
       - employees
@@ -40774,7 +40774,7 @@ user-graduate:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: User Graduate
+  label: Users Graduate
   search:
     terms:
       - uer
@@ -40799,7 +40799,7 @@ user-group:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: User Group
+  label: Users Group
   search:
     terms:
       - bust
@@ -40826,7 +40826,7 @@ user-injured:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: User Injured
+  label: Users Injured
   search:
     terms:
       - employees
@@ -40852,7 +40852,7 @@ user-large:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: User Large
+  label: Users Large
   search:
     terms:
       - employees
@@ -40876,7 +40876,7 @@ user-large-slash:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: User Large Slash
+  label: Users Large Slash
   search:
     terms:
       - disabled
@@ -40901,7 +40901,7 @@ user-lock:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: User Lock
+  label: Users Lock
   search:
     terms:
       - employees
@@ -40925,7 +40925,7 @@ user-minus:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: User Minus
+  label: Users Minus
   search:
     terms:
       - delete
@@ -40951,7 +40951,7 @@ user-ninja:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: User Ninja
+  label: Users Ninja
   search:
     terms:
       - assassin
@@ -40981,7 +40981,7 @@ user-nurse:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: User Nurse
+  label: Users Nurse
   search:
     terms:
       - covid-19
@@ -41013,7 +41013,7 @@ user-pen:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: User Pen
+  label: Users Pen
   search:
     terms:
       - employees
@@ -41039,7 +41039,7 @@ user-plus:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: User Plus
+  label: Users Plus
   search:
     terms:
       - add
@@ -41073,7 +41073,7 @@ user-secret:
     - 6.4.0
     - 6.5.0
     - 6.5.1
-  label: User Secret
+  label: Users Secret
   search:
     terms:
       - detective
@@ -41097,7 +41097,7 @@ user-shield:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: User Shield
+  label: Users Shield
   search:
     terms:
       - employees
@@ -41120,7 +41120,7 @@ user-slash:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: User Slash
+  label: Users Slash
   search:
     terms:
       - ban
@@ -41147,7 +41147,7 @@ user-tag:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: User Tag
+  label: Users Tag
   search:
     terms:
       - employees
@@ -41170,7 +41170,7 @@ user-tie:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: User Tie
+  label: Users Tie
   search:
     terms:
       - administrator
@@ -41205,7 +41205,7 @@ user-xmark:
     - 6.3.0
     - 6.4.0
     - 6.5.0
-  label: User Xmark
+  label: Users Xmark
   search:
     terms:
       - archive

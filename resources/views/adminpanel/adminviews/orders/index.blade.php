@@ -21,7 +21,7 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Customer Name</th>
+                    <th>Customer Email</th>
                     <th>Employee Name</th>
                     <th>Total Price</th>
                     <th>Payment</th>
@@ -34,23 +34,26 @@
                 @foreach($orders as $Orders)
                     <tr>
                         <td>{{ $Orders->id }}</td>
-                        @foreach($user as $User)
-                            @if($Orders->CustomerID == $User->id && $User->role_as == '0')
-                                <td>{{ $User->email }}</td>
-                            @endif
+
+                        @foreach($customers as $Customers)
+                        @foreach($users as $Users)
+                        @if($Orders->CustomerID == $Customers->id && $Users->role_as == '0')
+                            <td>{{ $Users->email }}</td>
+                        @endif
+                        @endforeach
                         @endforeach
 
-                        @foreach($user as $User)
-                            @if($Orders->EmployeeID == $User->id)
-                                <td>{{ $User->name }}</td>
+                        @foreach($employee as $Employee)
+                            @if($Orders->EmployeeID == $Employee->id)
+                                <td>{{ $Users->name }}</td>
                             @endif
                         @endforeach
 
                         <td>{{ $Orders->totalPrice }}$</td>
 
-                        @foreach($paymentmethods as $PaymentMethods)
-                            @if($Orders->PaymentID == $PaymentMethods->id)
-                                <td>{{ $PaymentMethods->name }}</td>
+                        @foreach($paymentID as $PaymentID)
+                            @if($Orders->PaymentID == $PaymentID->id)
+                                <td>{{ $PaymentID->name }}</td>
                             @endif
                         @endforeach
 

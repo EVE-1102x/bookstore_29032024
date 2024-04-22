@@ -12,7 +12,7 @@ use App\Models\PieceDetail;
 use App\Models\Books;
 use App\Models\Publishers;
 use App\Models\Theme;
-use App\Models\User;
+use App\Models\Users;
 use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller

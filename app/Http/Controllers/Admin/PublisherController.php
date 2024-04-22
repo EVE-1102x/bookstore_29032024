@@ -10,7 +10,7 @@ use App\Models\piece;
 use App\Models\Discounts;
 use App\Models\Publishers;
 use App\Models\Orders;
-use App\Models\User;
+use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

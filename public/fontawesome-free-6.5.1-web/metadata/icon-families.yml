@@ -6940,7 +6940,7 @@ building-user:
     pro:
       - family: classic
         style: solid
-  label: Building User
+  label: Building Users
   search:
     terms:
       - apartment
@@ -9016,7 +9016,7 @@ chalkboard-user:
     pro:
       - family: classic
         style: solid
-  label: Chalkboard User
+  label: Chalkboard Users
   search:
     terms:
       - blackboard
@@ -11186,7 +11186,7 @@ circle-user:
         style: solid
       - family: classic
         style: regular
-  label: Circle User
+  label: Circle Users
   search:
     terms:
       - employees
@@ -11463,7 +11463,7 @@ clipboard-user:
     pro:
       - family: classic
         style: solid
-  label: Clipboard User
+  label: Clipboard Users
   search:
     terms:
       - attendance
@@ -25755,7 +25755,7 @@ hospital-user:
     pro:
       - family: classic
         style: solid
-  label: Hospital User
+  label: Hospital Users
   search:
     terms:
       - covid-19
@@ -26227,7 +26227,7 @@ house-chimney-user:
     pro:
       - family: classic
         style: solid
-  label: House Chimney User
+  label: House Chimney Users
   search:
     terms:
       - covid-19
@@ -26725,7 +26725,7 @@ house-user:
     pro:
       - family: classic
         style: solid
-  label: House User
+  label: House Users
   search:
     terms:
       - house
@@ -49745,7 +49745,7 @@ user:
         style: solid
       - family: classic
         style: regular
-  label: User
+  label: Users
   search:
     terms:
       - adult
@@ -49783,7 +49783,7 @@ user-astronaut:
     pro:
       - family: classic
         style: solid
-  label: User Astronaut
+  label: Users Astronaut
   search:
     terms:
       - avatar
@@ -49814,7 +49814,7 @@ user-check:
     pro:
       - family: classic
         style: solid
-  label: User Check
+  label: Users Check
   search:
     terms:
       - employees
@@ -49844,7 +49844,7 @@ user-clock:
     pro:
       - family: classic
         style: solid
-  label: User Clock
+  label: Users Clock
   search:
     terms:
       - employees
@@ -49879,7 +49879,7 @@ user-doctor:
     pro:
       - family: classic
         style: solid
-  label: User Doctor
+  label: Users Doctor
   search:
     terms:
       - covid-19
@@ -49916,7 +49916,7 @@ user-gear:
     pro:
       - family: classic
         style: solid
-  label: User Gear
+  label: Users Gear
   search:
     terms:
       - employees
@@ -49944,7 +49944,7 @@ user-graduate:
     pro:
       - family: classic
         style: solid
-  label: User Graduate
+  label: Users Graduate
   search:
     terms:
       - uer
@@ -49974,7 +49974,7 @@ user-group:
     pro:
       - family: classic
         style: solid
-  label: User Group
+  label: Users Group
   search:
     terms:
       - bust
@@ -50006,7 +50006,7 @@ user-injured:
     pro:
       - family: classic
         style: solid
-  label: User Injured
+  label: Users Injured
   search:
     terms:
       - employees
@@ -50037,7 +50037,7 @@ user-large:
     pro:
       - family: classic
         style: solid
-  label: User Large
+  label: Users Large
   search:
     terms:
       - employees
@@ -50066,7 +50066,7 @@ user-large-slash:
     pro:
       - family: classic
         style: solid
-  label: User Large Slash
+  label: Users Large Slash
   search:
     terms:
       - disabled
@@ -50096,7 +50096,7 @@ user-lock:
     pro:
       - family: classic
         style: solid
-  label: User Lock
+  label: Users Lock
   search:
     terms:
       - employees
@@ -50125,7 +50125,7 @@ user-minus:
     pro:
       - family: classic
         style: solid
-  label: User Minus
+  label: Users Minus
   search:
     terms:
       - delete
@@ -50156,7 +50156,7 @@ user-ninja:
     pro:
       - family: classic
         style: solid
-  label: User Ninja
+  label: Users Ninja
   search:
     terms:
       - assassin
@@ -50191,7 +50191,7 @@ user-nurse:
     pro:
       - family: classic
         style: solid
-  label: User Nurse
+  label: Users Nurse
   search:
     terms:
       - covid-19
@@ -50228,7 +50228,7 @@ user-pen:
     pro:
       - family: classic
         style: solid
-  label: User Pen
+  label: Users Pen
   search:
     terms:
       - employees
@@ -50259,7 +50259,7 @@ user-plus:
     pro:
       - family: classic
         style: solid
-  label: User Plus
+  label: Users Plus
   search:
     terms:
       - add
@@ -50298,7 +50298,7 @@ user-secret:
     pro:
       - family: classic
         style: solid
-  label: User Secret
+  label: Users Secret
   search:
     terms:
       - detective
@@ -50327,7 +50327,7 @@ user-shield:
     pro:
       - family: classic
         style: solid
-  label: User Shield
+  label: Users Shield
   search:
     terms:
       - employees
@@ -50355,7 +50355,7 @@ user-slash:
     pro:
       - family: classic
         style: solid
-  label: User Slash
+  label: Users Slash
   search:
     terms:
       - ban
@@ -50387,7 +50387,7 @@ user-tag:
     pro:
       - family: classic
         style: solid
-  label: User Tag
+  label: Users Tag
   search:
     terms:
       - employees
@@ -50415,7 +50415,7 @@ user-tie:
     pro:
       - family: classic
         style: solid
-  label: User Tie
+  label: Users Tie
   search:
     terms:
       - administrator
@@ -50455,7 +50455,7 @@ user-xmark:
     pro:
       - family: classic
         style: solid
-  label: User Xmark
+  label: Users Xmark
   search:
     terms:
       - archive

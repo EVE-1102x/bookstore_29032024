@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CategoriesFormRequest;
 use App\Models\Categories;
 use App\Models\Theme;
-use App\Models\User;
+use App\Models\Users;
 use Illuminate\Support\Facades\Auth;
 
 class CategoriesController extends Controller
@@ -17,7 +17,7 @@ class CategoriesController extends Controller
 //      Cau lenh nay rat quan trong,
 //      no se fetch thong tin tu database roi cung cap cho view
         $categories = Categories::all();
-        $user = User::all();
+        $user = Users::all();
         return view('adminpanel.adminviews.categories.index', compact('categories','user'));
     }
 

@@ -34,7 +34,7 @@
 
                     <!--Go Back-->
                     <td>
-                        <a href="{{ url('admin/paymentmethods') }}" class="btn btn-primary ms-1">
+                        <a href="{{ url('admin/orders') }}" class="btn btn-primary ms-1">
                             Go Back
                         </a>
                     </td>
